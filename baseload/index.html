@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseload Operations Advisory | Warehouse Intelligence</title>
+    <meta name="description" content="Inventory accuracy audits, WMS optimization, and automation readiness assessments. Warehouse consulting with measured results.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --slate-950: #0b1015; --slate-900: #121a22; --slate-850: #182028;
+            --slate-800: #1e2a36; --slate-700: #2d3f4f; --slate-600: #456178;
+            --slate-500: #5a7a94; --slate-400: #8299ad; --slate-300: #a8bac9;
+            --slate-200: #cdd8e1; --slate-100: #eef2f5;
+            --amber-600: #d97706; --amber-500: #f59e0b; --amber-400: #fbbf24;
+            --green-400: #4ade80;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: var(--font-body); background: var(--slate-950);
+            color: var(--slate-200); line-height: 1.65; font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(11, 16, 21, 0.92); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--slate-800);
+        }
+        .nav-inner {
+            max-width: 1180px; margin: 0 auto; padding: 0 32px; height: 72px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo {
+            font-weight: 700; font-size: 17px; color: var(--slate-100);
+            text-decoration: none; display: flex; align-items: center; gap: 12px;
+        }
+        .logo-mark {
+            width: 36px; height: 36px;
+            background: linear-gradient(145deg, var(--amber-500), var(--amber-600));
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-mono); font-weight: 600; font-size: 15px;
+            color: var(--slate-950);
+        }
+        .nav-links {
+            display: flex; align-items: center; gap: 36px; list-style: none;
+        }
+        .nav-links a {
+            color: var(--slate-400); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--slate-100); }
+        .nav-cta {
+            background: var(--amber-500); color: var(--slate-950) !important;
+            padding: 10px 22px; font-weight: 600;
+        }
+        .nav-cta:hover { background: var(--amber-400); }
+        .nav-toggle {
+            display: none; background: none; border: none;
+            color: var(--slate-100); cursor: pointer; padding: 8px;
+        }
+
+        /* COMMON */
+        section { padding: 100px 32px; }
+        .container { max-width: 1180px; margin: 0 auto; }
+        .section-label {
+            font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+            color: var(--amber-500); text-transform: uppercase;
+            letter-spacing: 0.12em; margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+            letter-spacing: -0.025em; color: var(--slate-100);
+            margin-bottom: 16px; line-height: 1.2;
+        }
+        .section-desc {
+            font-size: 17px; color: var(--slate-400);
+            max-width: 540px; line-height: 1.7;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding-top: 72px; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: 
+                radial-gradient(ellipse 80% 60% at 70% 20%, rgba(245, 158, 11, 0.06), transparent),
+                repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(30, 42, 54, 0.4) 60px, rgba(30, 42, 54, 0.4) 61px),
+                repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(30, 42, 54, 0.4) 60px, rgba(30, 42, 54, 0.4) 61px);
+        }
+        .hero-content { position: relative; max-width: 720px; animation: fadeUp 0.8s ease-out; }
+        .hero-tagline {
+            font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+            color: var(--amber-500); margin-bottom: 28px;
+            display: flex; align-items: center; gap: 14px;
+        }
+        .hero-tagline::before { content: ''; width: 32px; height: 2px; background: var(--amber-500); }
+        .hero h1 {
+            font-size: clamp(38px, 5.5vw, 58px); font-weight: 700;
+            line-height: 1.12; letter-spacing: -0.03em;
+            color: var(--slate-100); margin-bottom: 28px;
+        }
+        .hero h1 .accent { color: var(--amber-400); }
+        .hero-text {
+            font-size: 19px; color: var(--slate-400);
+            max-width: 560px; margin-bottom: 44px; line-height: 1.7;
+        }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 30px; font-family: var(--font-body);
+            font-weight: 600; font-size: 15px; text-decoration: none;
+            transition: all 0.2s; cursor: pointer; border: none;
+        }
+        .btn-primary { background: var(--amber-500); color: var(--slate-950); }
+        .btn-primary:hover { background: var(--amber-400); transform: translateY(-2px); }
+        .btn-secondary {
+            background: transparent; color: var(--slate-200);
+            border: 1px solid var(--slate-700);
+        }
+        .btn-secondary:hover { background: var(--slate-850); border-color: var(--slate-600); }
+        .btn svg { width: 18px; height: 18px; }
+
+        /* STATS */
+        .stats-bar {
+            background: var(--slate-900);
+            border-top: 1px solid var(--slate-800);
+            border-bottom: 1px solid var(--slate-800);
+            padding: 56px 32px;
+        }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 32px; max-width: 1180px; margin: 0 auto;
+        }
+        .stat-item { text-align: center; }
+        .stat-value {
+            font-family: var(--font-mono); font-size: clamp(36px, 5vw, 52px);
+            font-weight: 600; color: var(--amber-400); line-height: 1; margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 13px; color: var(--slate-500);
+            text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500;
+        }
+
+        /* SERVICES */
+        .services { background: var(--slate-950); }
+        .services-header { margin-bottom: 56px; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .service-card {
+            background: var(--slate-900); border: 1px solid var(--slate-800);
+            padding: 36px 32px; transition: all 0.25s;
+            opacity: 0; animation: fadeUp 0.6s ease-out forwards;
+        }
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:hover { border-color: var(--slate-700); transform: translateY(-4px); }
+        .service-icon {
+            width: 48px; height: 48px; background: var(--slate-850);
+            border: 1px solid var(--slate-700);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px; color: var(--amber-500);
+        }
+        .service-icon svg { width: 24px; height: 24px; }
+        .service-card h3 {
+            font-size: 19px; font-weight: 600; color: var(--slate-100);
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            font-size: 15px; color: var(--slate-400);
+            margin-bottom: 24px; line-height: 1.7;
+        }
+        .service-deliverables {
+            list-style: none; border-top: 1px solid var(--slate-800); padding-top: 20px;
+        }
+        .service-deliverables li {
+            font-family: var(--font-mono); font-size: 12px; color: var(--slate-500);
+            padding: 6px 0; display: flex; align-items: center; gap: 10px;
+        }
+        .service-deliverables li::before { content: '→'; color: var(--amber-500); }
+
+        /* CASE STUDY */
+        .case-study { background: var(--slate-900); }
+        .case-study-header { margin-bottom: 56px; }
+        .case-content {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 64px; align-items: start;
+        }
+        .case-narrative h3 {
+            font-size: 20px; font-weight: 600; color: var(--slate-100);
+            margin-bottom: 16px; margin-top: 32px;
+        }
+        .case-narrative h3:first-of-type { margin-top: 0; }
+        .case-meta {
+            display: flex; gap: 24px; margin-bottom: 28px; flex-wrap: wrap;
+        }
+        .case-meta-item {
+            font-family: var(--font-mono); font-size: 12px; color: var(--slate-500);
+        }
+        .case-meta-item span { color: var(--slate-300); }
+        .case-narrative p {
+            font-size: 16px; color: var(--slate-400);
+            margin-bottom: 16px; line-height: 1.75;
+        }
+        .case-metrics {
+            background: var(--slate-850); border: 1px solid var(--slate-800);
+            padding: 32px; position: sticky; top: 100px;
+        }
+        .metrics-title {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+            color: var(--slate-500); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 24px;
+        }
+        .metrics-table { width: 100%; border-collapse: collapse; }
+        .metrics-table th, .metrics-table td {
+            text-align: left; padding: 14px 0;
+            border-bottom: 1px solid var(--slate-800);
+        }
+        .metrics-table th {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            color: var(--slate-500); text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .metrics-table td { font-family: var(--font-mono); font-size: 15px; }
+        .metrics-table td:first-child {
+            font-family: var(--font-body); color: var(--slate-300); font-size: 14px;
+        }
+        .metrics-table tr:last-child td { border-bottom: none; }
+        .metric-before { color: var(--slate-500); }
+        .metric-after { color: var(--green-400); }
+        .metric-change { color: var(--amber-400); font-weight: 500; }
+
+        /* TOOLS */
+        .tools { background: var(--slate-950); }
+        .tools-header { margin-bottom: 48px; }
+        .calculator {
+            background: var(--slate-900); border: 1px solid var(--slate-800);
+            max-width: 800px;
+        }
+        .calc-header {
+            background: var(--slate-850); border-bottom: 1px solid var(--slate-800);
+            padding: 24px 32px; display: flex; align-items: center; gap: 16px;
+        }
+        .calc-icon {
+            width: 40px; height: 40px; background: var(--slate-800);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--amber-500);
+        }
+        .calc-icon svg { width: 20px; height: 20px; }
+        .calc-header h3 { font-size: 17px; font-weight: 600; color: var(--slate-100); }
+        .calc-header p { font-size: 13px; color: var(--slate-500); margin-top: 2px; }
+        .calc-body {
+            padding: 32px; display: grid;
+            grid-template-columns: 1fr 1fr; gap: 48px;
+        }
+        .calc-inputs { display: flex; flex-direction: column; gap: 24px; }
+        .input-group label {
+            display: block; font-size: 13px; font-weight: 500;
+            color: var(--slate-400); margin-bottom: 8px;
+        }
+        .input-group input {
+            width: 100%; padding: 14px 16px;
+            font-family: var(--font-mono); font-size: 15px;
+            color: var(--slate-100); background: var(--slate-850);
+            border: 1px solid var(--slate-700); transition: all 0.2s;
+        }
+        .input-group input:focus {
+            outline: none; border-color: var(--amber-500); background: var(--slate-800);
+        }
+        .input-group input::placeholder { color: var(--slate-600); }
+        .input-hint { font-size: 12px; color: var(--slate-600); margin-top: 6px; }
+        .calc-results {
+            background: var(--slate-850); border: 1px solid var(--slate-800); padding: 28px;
+        }
+        .results-title {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+            color: var(--slate-500); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 24px;
+        }
+        .result-item { margin-bottom: 24px; }
+        .result-item:last-child { margin-bottom: 0; }
+        .result-label { font-size: 13px; color: var(--slate-500); margin-bottom: 6px; }
+        .result-value {
+            font-family: var(--font-mono); font-size: 28px;
+            font-weight: 600; color: var(--slate-100);
+        }
+        .result-value.highlight { color: var(--green-400); }
+        .result-value.warning { color: var(--amber-400); }
+
+        /* CONTACT */
+        .contact { background: var(--slate-900); }
+        .contact-content { max-width: 600px; }
+        .contact-content .section-title { margin-bottom: 20px; }
+        .contact-content .section-desc { margin-bottom: 40px; }
+        .contact-form { display: flex; flex-direction: column; gap: 20px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .contact-form label {
+            display: block; font-size: 13px; font-weight: 500;
+            color: var(--slate-400); margin-bottom: 8px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 14px 16px;
+            font-family: var(--font-body); font-size: 15px;
+            color: var(--slate-100); background: var(--slate-850);
+            border: 1px solid var(--slate-700); transition: all 0.2s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none; border-color: var(--amber-500); background: var(--slate-800);
+        }
+        .contact-form textarea { min-height: 140px; resize: vertical; }
+        .contact-form button { align-self: flex-start; margin-top: 8px; }
+        .contact-alt {
+            margin-top: 48px; padding-top: 32px;
+            border-top: 1px solid var(--slate-800);
+        }
+        .contact-alt p { font-size: 14px; color: var(--slate-500); }
+        .contact-alt a { color: var(--amber-500); text-decoration: none; }
+        .contact-alt a:hover { color: var(--amber-400); }
+
+        /* FOOTER */
+        footer {
+            background: var(--slate-950); border-top: 1px solid var(--slate-800);
+            padding: 48px 32px;
+        }
+        .footer-inner {
+            max-width: 1180px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .footer-logo {
+            display: flex; align-items: center; gap: 12px;
+            color: var(--slate-400); font-weight: 600; font-size: 15px;
+        }
+        .footer-logo .logo-mark { width: 28px; height: 28px; font-size: 12px; }
+        .footer-copy { font-size: 13px; color: var(--slate-600); }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none; position: absolute; top: 72px; left: 0; right: 0;
+                background: var(--slate-900); flex-direction: column;
+                padding: 24px 32px; gap: 20px; border-bottom: 1px solid var(--slate-800);
+            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .case-content { grid-template-columns: 1fr; gap: 40px; }
+            .case-metrics { position: static; }
+            .calc-body { grid-template-columns: 1fr; gap: 32px; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            section { padding: 72px 20px; }
+            .nav-inner { padding: 0 20px; }
+            .stats-bar { padding: 40px 20px; }
+            .stat-value { font-size: 36px; }
+            .hero-actions { flex-direction: column; }
+            .hero-actions .btn { width: 100%; justify-content: center; }
+            .calc-header, .calc-body { padding: 20px; }
+            .calc-results { padding: 20px; }
+            .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <div class="logo-mark">B</div>
+                <span>Baseload</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#case-study">Case Study</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="24" height="24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tagline">Warehouse Intelligence. Measured Results.</div>
+                <h1>Inventory discrepancies cost more than shrink—<span class="accent">they cost trust.</span></h1>
+                <p class="hero-text">We help distribution and fulfillment operations find the root cause of accuracy problems, optimize warehouse management systems, and prepare for automation—with clear metrics at every step.</p>
+                <div class="hero-actions">
+                    <a href="#case-study" class="btn btn-primary">
+                        See Our Work
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">Start a Conversation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-value">87%</div>
+                <div class="stat-label">of discrepancies are process failures</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">$420K</div>
+                <div class="stat-label">avg. annual cost per facility</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">6–12</div>
+                <div class="stat-label">weeks to measurable improvement</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">23</div>
+                <div class="stat-label">engagements completed</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header">
+                <div class="section-label">Services</div>
+                <h2 class="section-title">What we do</h2>
+                <p class="section-desc">Three focused offerings designed to diagnose problems, fix systems, and set you up for what's next.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
+                        </svg>
+                    </div>
+                    <h3>Inventory Accuracy Audits</h3>
+                    <p>We identify where discrepancies originate—receiving, putaway, picking, or system sync—and quantify the cost. No guesswork, just data.</p>
+                    <ul class="service-deliverables">
+                        <li>Root cause analysis report</li>
+                        <li>Cycle count methodology review</li>
+                        <li>Discrepancy trending dashboard</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5"/>
+                        </svg>
+                    </div>
+                    <h3>WMS Optimization</h3>
+                    <p>Clean up transaction noise, streamline workflows, and get your warehouse management system working the way it should. We work with Oracle, Manhattan, Blue Yonder, and others.</p>
+                    <ul class="service-deliverables">
+                        <li>Transaction code audit</li>
+                        <li>Workflow mapping & simplification</li>
+                        <li>System hygiene playbook</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/>
+                        </svg>
+                    </div>
+                    <h3>Automation Readiness</h3>
+                    <p>Before you invest in robotics or AS/RS, we assess whether your processes and data are ready. Honest gap analysis—not a vendor pitch.</p>
+                    <ul class="service-deliverables">
+                        <li>Process documentation review</li>
+                        <li>Data quality assessment</li>
+                        <li>Technology fit analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-study" id="case-study">
+        <div class="container">
+            <div class="case-study-header">
+                <div class="section-label">Case Study</div>
+                <h2 class="section-title">Regional 3PL turns accuracy crisis into competitive advantage</h2>
+            </div>
+            <div class="case-content">
+                <div class="case-narrative">
+                    <div class="case-meta">
+                        <div class="case-meta-item">Industry: <span>Third-Party Logistics</span></div>
+                        <div class="case-meta-item">Facilities: <span>4</span></div>
+                        <div class="case-meta-item">SKUs: <span>180,000+</span></div>
+                        <div class="case-meta-item">Duration: <span>10 weeks</span></div>
+                    </div>
+                    <h3>The Problem</h3>
+                    <p>A regional 3PL serving e-commerce and retail clients was bleeding margin to inventory discrepancies. Cycle counts were reactive, root cause analysis was nonexistent, and client chargebacks were climbing. Leadership suspected receiving and putaway errors, but had no data to confirm.</p>
+                    <h3>Our Approach</h3>
+                    <p>We embedded with the ops team for two weeks, mapping every transaction type and tracing 1,200 discrepancies back to origin. The data revealed that 68% of errors originated from a single workflow: partial pallet receiving with manual quantity entry.</p>
+                    <p>We redesigned the receiving process to require scan verification at case level, implemented a daily discrepancy review cadence, and trained supervisors on root cause documentation.</p>
+                    <h3>The Result</h3>
+                    <p>Within eight weeks of go-live, the client achieved a sustained inventory accuracy rate above 99.2%—up from 94.1%. Cycle count labor dropped 40% as counts shifted from reactive wall-to-walls to targeted, exception-driven audits.</p>
+                </div>
+                <div class="case-metrics">
+                    <div class="metrics-title">Key Metrics</div>
+                    <table class="metrics-table">
+                        <thead>
+                            <tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Inventory Accuracy</td>
+                                <td class="metric-before">94.1%</td>
+                                <td class="metric-after">99.2%</td>
+                                <td class="metric-change">+5.1 pts</td>
+                            </tr>
+                            <tr>
+                                <td>Monthly Discrepancies</td>
+                                <td class="metric-before">1,240</td>
+                                <td class="metric-after">312</td>
+                                <td class="metric-change">−75%</td>
+                            </tr>
+                            <tr>
+                                <td>Cycle Count Hours/Week</td>
+                                <td class="metric-before">86 hrs</td>
+                                <td class="metric-after">52 hrs</td>
+                                <td class="metric-change">−40%</td>
+                            </tr>
+                            <tr>
+                                <td>Client Chargebacks</td>
+                                <td class="metric-before">$31K/mo</td>
+                                <td class="metric-after">$8K/mo</td>
+                                <td class="metric-change">−74%</td>
+                            </tr>
+                            <tr>
+                                <td>Root Cause Resolution</td>
+                                <td class="metric-before">12%</td>
+                                <td class="metric-after">89%</td>
+                                <td class="metric-change">+77 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools" id="tools">
+        <div class="container">
+            <div class="tools-header">
+                <div class="section-label">Tools</div>
+                <h2 class="section-title">Cycle Count ROI Estimator</h2>
+                <p class="section-desc">See the cost of inventory discrepancies and what targeted improvement is worth.</p>
+            </div>
+            <div class="calculator">
+                <div class="calc-header">
+                    <div class="calc-icon">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>Calculate Your Potential Savings</h3>
+                        <p>Enter your facility data to see the impact of improved accuracy.</p>
+                    </div>
+                </div>
+                <div class="calc-body">
+                    <div class="calc-inputs">
+                        <div class="input-group">
+                            <label for="skuCount">Active SKU Count</label>
+                            <input type="number" id="skuCount" value="15000">
+                        </div>
+                        <div class="input-group">
+                            <label for="currentAccuracy">Current Accuracy Rate (%)</label>
+                            <input type="number" id="currentAccuracy" step="0.1" value="95">
+                            <div class="input-hint">Industry average is 93–97%</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="avgUnitValue">Average Unit Value ($)</label>
+                            <input type="number" id="avgUnitValue" step="0.01" value="28">
+                        </div>
+                        <div class="input-group">
+                            <label for="laborRate">Hourly Labor Rate ($)</label>
+                            <input type="number" id="laborRate" step="0.01" value="22">
+                        </div>
+                    </div>
+                    <div class="calc-results">
+                        <div class="results-title">Estimated Impact</div>
+                        <div class="result-item">
+                            <div class="result-label">Est. Annual Discrepancy Cost</div>
+                            <div class="result-value warning" id="discrepancyCost">$210,000</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">Potential Savings (at 99% accuracy)</div>
+                            <div class="result-value highlight" id="potentialSavings">$168,000</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">Cycle Count Labor Reduction</div>
+                            <div class="result-value" id="laborSavings">$34,320</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="section-label">Contact</div>
+                <h2 class="section-title">Let's talk about your operation.</h2>
+                <p class="section-desc">No sales pitch. We'll discuss your challenges, share relevant experience, and give you an honest assessment of whether we can help.</p>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="message">What's the challenge?</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your operation and what's prompting this conversation."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                <div class="contact-alt">
+                    <p>Prefer email? Reach us directly at <a href="mailto:hello@baseloadops.com">hello@baseloadops.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <div class="logo-mark">B</div>
+                <span>Baseload Operations Advisory</span>
+            </div>
+            <div class="footer-copy">© 2025 Baseload Operations Advisory. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        function formatCurrency(n) { return '$' + Math.round(n).toLocaleString(); }
+        
+        function calculate() {
+            const sku = +document.getElementById('skuCount').value || 0;
+            const acc = +document.getElementById('currentAccuracy').value || 0;
+            const val = +document.getElementById('avgUnitValue').value || 0;
+            const rate = +document.getElementById('laborRate').value || 0;
+            
+            const units = sku * 7 * 12;
+            const discRate = (100 - acc) / 100;
+            const discUnits = units * discRate;
+            const cost = (discUnits * val * 0.15) + (discUnits * 0.25 * rate);
+            
+            const targetUnits = units * 0.01;
+            const targetCost = (targetUnits * val * 0.15) + (targetUnits * 0.25 * rate);
+            const savings = Math.max(0, cost - targetCost);
+            const labor = sku * 0.1 * 0.4 * rate;
+            
+            document.getElementById('discrepancyCost').textContent = formatCurrency(cost);
+            document.getElementById('potentialSavings').textContent = formatCurrency(savings);
+            document.getElementById('laborSavings').textContent = formatCurrency(labor);
+        }
+        
+        document.querySelectorAll('.calc-inputs input').forEach(i => i.addEventListener('input', calculate));
+        calculate();
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for reaching out. We\'ll be in touch within one business day.');
+            this.reset();
+        });
+        
+        document.getElementById('navToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active'));
+        });
+    </script>
+</body>
+</html>

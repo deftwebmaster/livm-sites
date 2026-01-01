@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse Evelyn Moore's wedding photography portfolio featuring intimate ceremonies, grand celebrations, and destination weddings across California and beyond.">
+  <title>Portfolio | Evelyn Moore Photography</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">Evelyn <span>Moore</span></a>
+      
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="portfolio.html" class="nav__link active">Portfolio</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+  
+  <!-- Mobile Nav -->
+  <div class="mobile-nav">
+    <ul class="mobile-nav__list">
+      <li><a href="index.html" class="mobile-nav__link">Home</a></li>
+      <li><a href="portfolio.html" class="mobile-nav__link">Portfolio</a></li>
+      <li><a href="contact.html" class="mobile-nav__link">Contact</a></li>
+    </ul>
+  </div>
+  
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Love Stories</h1>
+      <p class="lead">Each wedding is unique—intimate elopements, grand celebrations, and everything in between. Here's a glimpse into the moments I've been honored to witness.</p>
+    </div>
+  </section>
+  
+  <!-- Gallery Filters -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="gallery-filters reveal">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="wedding">Weddings</button>
+        <button class="filter-btn" data-filter="elopement">Elopements</button>
+        <button class="filter-btn" data-filter="engagement">Engagements</button>
+      </div>
+      
+      <div class="gallery-grid reveal-stagger">
+        <!-- Row 1 -->
+        <div class="gallery-item gallery-item--featured" data-lightbox data-category="wedding">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=675&fit=crop&q=80" 
+               alt="Bride and groom sunset portrait"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Sarah & James</strong>
+              <span>Auberge du Soleil, Napa Valley</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox data-category="wedding">
+          <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=600&fit=crop&q=80" 
+               alt="Couple in vineyard"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Maria & Lucas</strong>
+              <span>Domaine Chandon</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Row 2 -->
+        <div class="gallery-item" data-lightbox data-category="elopement">
+          <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600&h=600&fit=crop&q=80" 
+               alt="Bride's veil in wind"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Emma & Michael</strong>
+              <span>Big Sur Cliffs</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox data-category="wedding">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&h=600&fit=crop&q=80" 
+               alt="First dance"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Olivia & Daniel</strong>
+              <span>Carmel Valley Ranch</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox data-category="engagement">
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&h=600&fit=crop&q=80" 
+               alt="Couple portrait olive grove"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Natalie & Chris</strong>
+              <span>Sonoma Engagement</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Row 3 -->
+        <div class="gallery-item gallery-item--wide" data-lightbox data-category="wedding">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&h=600&fit=crop&q=80" 
+               alt="Sunset kiss"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Rachel & Tom</strong>
+              <span>Ritz-Carlton, Lake Tahoe</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox data-category="elopement">
+          <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&h=600&fit=crop&q=80" 
+               alt="Mountain elopement"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Ashley & Ryan</strong>
+              <span>Yosemite Elopement</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Row 4 -->
+        <div class="gallery-item" data-lightbox data-category="wedding">
+          <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&h=600&fit=crop&q=80" 
+               alt="Wedding ceremony"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Jennifer & David</strong>
+              <span>Meadowood, Napa</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox data-category="engagement">
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=600&fit=crop&q=80" 
+               alt="Beach engagement"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Lisa & Mark</strong>
+              <span>Stinson Beach</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox data-category="wedding">
+          <img src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=600&h=600&fit=crop&q=80" 
+               alt="Bouquet detail"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Bridal Details</strong>
+              <span>Garden Roses & Eucalyptus</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Row 5 -->
+        <div class="gallery-item gallery-item--wide" data-lightbox data-category="elopement">
+          <img src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=900&h=600&fit=crop&q=80" 
+               alt="Coastal ceremony"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Nicole & Josh</strong>
+              <span>Carmel Point Elopement</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox data-category="wedding">
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=600&fit=crop&q=80" 
+               alt="Reception dancing"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Emily & Andrew</strong>
+              <span>Solage Resort</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Story 1 -->
+  <section class="story-section">
+    <div class="container">
+      <div class="story-header reveal">
+        <p class="eyebrow">Featured Story</p>
+        <h3>Sarah & James</h3>
+        <p>An intimate vineyard celebration at Auberge du Soleil, where golden hour lasted forever and every moment felt like a dream.</p>
+      </div>
+      
+      <div class="story-grid reveal-stagger">
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=900&fit=crop&q=80" 
+               alt="Bride and groom embrace"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>The First Look</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=400&fit=crop&q=80" 
+               alt="Vineyard walk"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Golden Hour Stroll</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&h=400&fit=crop&q=80" 
+               alt="Ceremony vows"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>The Vows</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&h=400&fit=crop&q=80" 
+               alt="First dance"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>First Dance</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=400&fit=crop&q=80" 
+               alt="Sunset kiss"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Golden Hour Kiss</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Story 2 -->
+  <section class="story-section section--alt">
+    <div class="container">
+      <div class="story-header reveal">
+        <p class="eyebrow">Featured Story</p>
+        <h3>Emma & Michael</h3>
+        <p>A dramatic Big Sur elopement where the Pacific winds painted every frame with wild, untamed beauty.</p>
+      </div>
+      
+      <div class="story-grid reveal-stagger">
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600&h=900&fit=crop&q=80" 
+               alt="Veil in wind"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Wind & Waves</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&h=400&fit=crop&q=80" 
+               alt="Cliff overlook"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>The Overlook</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=600&h=400&fit=crop&q=80" 
+               alt="Coastal vows"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Private Vows</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&h=400&fit=crop&q=80" 
+               alt="Embrace"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Just Us</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-item" data-lightbox>
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=400&fit=crop&q=80" 
+               alt="Walking on beach"
+               loading="lazy">
+          <div class="gallery-item__overlay">
+            <div class="gallery-item__caption">
+              <strong>Beach Walk</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Band -->
+  <section class="cta-band">
+    <div class="container reveal">
+      <h2>Ready to Tell Your Story?</h2>
+      <p>I'd love to learn about your vision and see if we're a good fit.</p>
+      <a href="contact.html" class="btn btn--primary">Start the Conversation</a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__logo">Evelyn Moore Photography</p>
+      
+      <nav class="footer__nav">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="#" aria-label="Pinterest">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 12a4 4 0 1 1 8 0c0 4-3 6-3 6"></path>
+            <path d="M12 12v9"></path>
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+        </a>
+        <a href="#" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+      </div>
+      
+      <p class="footer__copy">© 2025 Evelyn Moore Photography. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <!-- Lightbox -->
+  <div class="lightbox" aria-hidden="true">
+    <button class="lightbox__close" aria-label="Close lightbox">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">‹</button>
+    <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">›</button>
+    <div class="lightbox__content">
+      <img src="" alt="" class="lightbox__image">
+      <div class="lightbox__caption"></div>
+    </div>
+  </div>
+  
+  <script src="scripts.js"></script>
+</body>
+</html>
